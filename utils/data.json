@@ -1,0 +1,31 @@
+{
+  "subscribedGroups": {
+    "120363374099955747@g.us": {
+      "welcomeMessage": {
+        "enabled": false,
+        "message": null
+      },
+      "antilinkEnabled": false,
+      "expiration": "2027-11-04T10:06:53.735Z"
+    },
+    "120363372993974936@g.us": {
+      "welcomeMessage": {
+        "message": "👋 Selamat datang @user di grup @grup!\n\nMohon untuk membaca deskripsi grup terlebih dahulu ya.\n\nBerikut beberapa panduan singkat untuk membantu Anda:\n\n📋  *List Menu yang Tersedia:*\nKetik `menu-lx` untuk melihat daftar menu.\n\n✅  *Melihat Daftar Harga:*\nKetik `#PL` untuk melihat daftar harga.\n\n💰  *Informasi Pembayaran:*\nKetik `#PY` untuk informasi lengkap mengenai pembayaran.\n\n🙋‍♂️  *Butuh Bantuan?*\nSilakan hubungi admin kami @+62 878-2970-8498 jika Anda memiliki pertanyaan atau membutuhkan bantuan.\n\nEnjoy! 🎉",
+        "enabled": true
+      },
+      "antilinkEnabled": true,
+      "expiration": "2025-02-09T10:06:57.406Z"
+    },
+    "120363042306024959@g.us": {
+      "welcomeMessage": {
+        "message": "👋 Selamat datang @user di grup @grup!\n\nMohon untuk membaca deskripsi grup terlebih dahulu ya.\n\nBerikut beberapa panduan singkat untuk membantu Anda:\n\n📋  *List Menu yang Tersedia:*\nKetik `menu-lx` untuk melihat daftar menu.\n\n✅  *Melihat Daftar Harga:*\nKetik `#PL` untuk melihat daftar harga.\n\n💰  *Informasi Pembayaran:*\nKetik `#PY` untuk informasi lengkap mengenai pembayaran.\n\n🙋‍♂️  *Butuh Bantuan?*\nSilakan hubungi admin kami @+6287829708498 jika Anda memiliki pertanyaan atau membutuhkan bantuan.\n\nEnjoy! 🎉",
+        "enabled": true
+      },
+      "antilinkEnabled": true,
+      "expiration": "2027-02-09T10:06:57.406Z"
+    }
+  },
+  "SUPER_ADMIN_IDS": [
+    "62895410219991@c.us"
+  ]
+}
