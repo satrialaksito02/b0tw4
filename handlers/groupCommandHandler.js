@@ -21,6 +21,9 @@ async function handleGroupCommand(client, message, chat) {
     const arg = messageParts.slice(1).join(" ");
     const linkRegex = /https?:\/\/[^\s]+|(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(\/\S*)?/gi;
 
+    // --- PERBAIKAN: Gunakan await saat cek langganan di awal ---
+    const groupIsSubscribed = await isGroupSubscribed(groupId);
+
     switch (command) {
         case config.commands.HIDETAG:
             if (!isAdmin) {
@@ -66,12 +69,14 @@ async function handleGroupCommand(client, message, chat) {
 
         case config.commands.ANTILINK:
             if (isAdmin) {
-                if (!isGroupSubscribed(groupId)) {
+                // --- PERBAIKAN: Gunakan variabel yang sudah di-await ---
+                if (!groupIsSubscribed) {
                     message.reply(config.messages.groupNotSubscribed);
                     return;
                 }
                 const enabled = arg === 'on';
-                setAntilink(groupId, enabled);
+                // --- PERBAIKAN: Tambahkan await ---
+                await setAntilink(groupId, enabled);
                 message.reply(enabled ? config.messages.antilinkEnabled : config.messages.antilinkDisabled);
             } else {
                 message.reply(config.messages.groupAdminOnly);
@@ -80,12 +85,14 @@ async function handleGroupCommand(client, message, chat) {
 
         case config.commands.WELCOME:
             if (isAdmin) {
-                if (!isGroupSubscribed(groupId)) {
+                 // --- PERBAIKAN: Gunakan variabel yang sudah di-await ---
+                if (!groupIsSubscribed) {
                     message.reply(config.messages.groupNotSubscribed);
                     return;
                 }
                 const welcomeEnabled = arg === 'on';
-                setWelcomeEnabled(groupId, welcomeEnabled);
+                 // --- PERBAIKAN: Tambahkan await ---
+                await setWelcomeEnabled(groupId, welcomeEnabled);
                  message.reply(welcomeEnabled ? config.messages.welcomeEnabled : config.messages.welcomeDisabled);
 
             } else {
@@ -95,13 +102,15 @@ async function handleGroupCommand(client, message, chat) {
 
         case config.commands.SET_WELCOME:
             if (isAdmin) {
-                if (!isGroupSubscribed(groupId)) {
+                 // --- PERBAIKAN: Gunakan variabel yang sudah di-await ---
+                if (!groupIsSubscribed) {
                     message.reply(config.messages.groupNotSubscribed);
                     return;
                 }
                 const newWelcomeMessage = arg.trim();
                 if (newWelcomeMessage) {
-                    setWelcomeMessage(groupId, newWelcomeMessage);
+                    // --- PERBAIKAN: Tambahkan await ---
+                    await setWelcomeMessage(groupId, newWelcomeMessage);
                     message.reply(config.messages.setWelcomeSuccess);
                 } else {
                     message.reply(config.messages.setWelcomeFormat);
@@ -112,30 +121,44 @@ async function handleGroupCommand(client, message, chat) {
             break;
 
         case config.commands.STATUS:
-                const status = getGroupSubscriptionStatus(groupId);
-                 message.reply(config.messages.groupStatus(status));
+                // --- PERBAIKAN: Tambahkan await ---
+                const status = await getGroupSubscriptionStatus(groupId);
+                 // Pastikan status bukan promise sebelum dikirim ke config
+                 if (status) {
+                    message.reply(config.messages.groupStatus(status));
+                 } else {
+                    // Handle kasus jika getGroupSubscriptionStatus gagal (meskipun seharusnya tidak jika error handlingnya baik)
+                    message.reply("Gagal mendapatkan status grup.");
+                 }
             break;
 
       default:
-           if (isGroupSubscribed(groupId) && isAntilinkEnabled(groupId)  && linkRegex.test(message.body) && !isAdmin) {
-                const violationCount = antispamService.addViolation(groupId, senderId);
-                await message.delete(true);
+            // --- PERBAIKAN: Tambahkan await untuk cek antilink ---
+           const antilinkOn = await isAntilinkEnabled(groupId);
+           // Cek link hanya jika grup berlangganan DAN antilink aktif
+           if (groupIsSubscribed && antilinkOn && linkRegex.test(message.body) && !isAdmin) {
+                // --- PERBAIKAN: Tambahkan await jika addViolation async ---
+                const violationCount = await antispamService.addViolation(groupId, senderId);
+                await message.delete(true); // Hapus pesan pelanggaran
 
                 if (violationCount === 1) {
-                    await chat.sendMessage(config.messages.antilinkFirstWarning(message.author), { mentions: [message.author] });
+                    await chat.sendMessage(config.messages.antilinkFirstWarning(senderId), { mentions: [senderId] }); // Mention senderId
                 } else if (violationCount > 1) {
-
-                    await chat.sendMessage(config.messages.antilinkKickWarning(message.author), { mentions: [message.author] });
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    await chat.removeParticipants([message.author]);
-
-                    antispamService.resetViolation(groupId, senderId);
-
+                    await chat.sendMessage(config.messages.antilinkKickWarning(senderId), { mentions: [senderId] }); // Mention senderId
+                    await new Promise(resolve => setTimeout(resolve, 2000)); // Tunggu 2 detik
+                     try {
+                        await chat.removeParticipants([senderId]); // Keluarkan pelanggar
+                         // --- PERBAIKAN: Tambahkan await jika resetViolation async ---
+                        await antispamService.resetViolation(groupId, senderId); // Reset count setelah kick
+                     } catch (removeError) {
+                         console.error(`Failed to remove participant ${senderId} from group ${groupId}:`, removeError);
+                         // Mungkin bot bukan admin lagi? Kirim pesan info jika gagal kick.
+                         // await chat.sendMessage(`Gagal mengeluarkan @${senderId.split('@')[0]}.`, { mentions: [senderId] });
+                     }
                 }
             }
-
+            // Tidak ada perintah yang cocok
     }
 }
 
 module.exports = { handleGroupCommand };
-

@@ -1,0 +1,4 @@
+2025/04/27-22:10:41.575 3f64 Creating DB G:\Users\Laksito\Downloads\whatsapp\.wwebjs_auth\session\Default\shared_proto_db\metadata since it was missing.
+2025/04/27-22:10:41.579 3f64 Reusing MANIFEST G:\Users\Laksito\Downloads\whatsapp\.wwebjs_auth\session\Default\shared_proto_db\metadata/MANIFEST-000001
+2025/04/27-22:10:41.579 3f64 Recovering log #3
+2025/04/27-22:10:41.579 3f64 Reusing old log G:\Users\Laksito\Downloads\whatsapp\.wwebjs_auth\session\Default\shared_proto_db\metadata/000003.log 
