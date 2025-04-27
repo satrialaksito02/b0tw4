@@ -1,0 +1,4 @@
+2025/04/27-22:23:52.474 784 Reusing MANIFEST G:\Users\Laksito\Downloads\whatsapp\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/04/27-22:23:52.474 784 Recovering log #703
+2025/04/27-22:23:52.478 784 Reusing old log G:\Users\Laksito\Downloads\whatsapp\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000703.log 
+2025/04/27-22:23:53.640 6e4 Manual compaction at level-0 from '\x00A\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00B\x00\x00\x00' @ 0 : 0; will stop at (end)

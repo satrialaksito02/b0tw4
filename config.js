@@ -62,7 +62,6 @@ module.exports = {
         subscribeSuccess: (groupId, expiryDate) => `✅ Langganan grup berhasil diperbarui! Masa aktif berlaku hingga: ${new Date(expiryDate).toLocaleString()}`,
         subscribeError: "❌ Terjadi kesalahan saat memperbarui langganan. Silakan coba lagi.",
     },
-    dataFilePath: 'data.json',
-    violationsFilePath: 'antilinkViolations.json',
     defaultSuperAdmins: ["62895410219991@c.us", "xxxxxxxx-yyyyyyyy@c.us"],
+    mongoURI: 'mongodb+srv://adilaksito:i2sQLt877qd56Hip@b0tw4.s7vlwih.mongodb.net/?retryWrites=true&w=majority&appName=b0tw4'
 };

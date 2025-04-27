@@ -1,15 +1,23 @@
 // utils/groupUtils.js
-const dataService = require('./dataService');
+const Group = require('../models/Group'); // Impor model Group
+const config = require('../config'); // Impor config jika perlu (misal untuk pesan)
 
-function isGroupSubscribed(groupId) {
-    const data = dataService.getData();
-    const subscription = data.subscribedGroups[groupId];
-    return subscription && new Date(subscription.expiration) > new Date();
+async function getGroupData(groupId) { // <- Fungsi async
+    if (!groupId) return null;
+    try {
+        return await Group.findOne({ groupId }); // <- Query ke MongoDB
+    } catch (error) {
+        console.error(`Error getting group data for ${groupId}:`, error);
+        return null;
+    }
 }
 
+async function isGroupSubscribed(groupId) {
+    const group = await getGroupData(groupId);
+    return group && group.expiration && new Date(group.expiration) > new Date();
+}
 
-function addSubscription(groupId, days, startDate = new Date()) {
-    const data = dataService.getData();
+async function addSubscription(groupId, days, startDate = new Date()) {
     if (!groupId || !days || isNaN(days)) {
         console.error("Error: Invalid groupId or days parameter.");
         return false;
@@ -18,134 +26,125 @@ function addSubscription(groupId, days, startDate = new Date()) {
     const expirationDate = new Date(startDate);
     expirationDate.setDate(expirationDate.getDate() + parseInt(days));
 
-    // Perbaikan Utama: Pastikan objek subscribedGroups[groupId] ada, dan *jangan* menimpanya
-    if (!data.subscribedGroups[groupId]) {
-        data.subscribedGroups[groupId] = {
-            welcomeMessage: {
-                enabled: false,
-                message: null
-            },
-            antilinkEnabled: false, // Inisialisasi antilink di sini.
-            // Tambahkan properti lain jika diperlukan di masa mendatang, di sini.
+    try {
+        const update = {
+            expiration: expirationDate,
+            // Set default jika grup baru ditambahkan atau perbarui expiration jika sudah ada
+            $setOnInsert: {
+                groupId: groupId,
+                antilinkEnabled: false,
+                'welcomeMessage.enabled': false,
+                'welcomeMessage.message': null,
+            }
         };
+        const options = { upsert: true, new: true, setDefaultsOnInsert: true };
+        const updatedGroup = await Group.findOneAndUpdate({ groupId }, update, options);
+        console.log(`Subscription added/updated for group ${groupId}. Expires: ${updatedGroup.expiration}`);
+        return true;
+    } catch (error) {
+        console.error(`Error adding/updating subscription for ${groupId}:`, error);
+        return false;
     }
-
-    data.subscribedGroups[groupId].expiration = expirationDate.toISOString();
-      // Jangan ubah properti lain yang mungkin sudah ada
-
-    dataService.updateData({ subscribedGroups: data.subscribedGroups }); // Gunakan updateData!
-    return true;
 }
 
-
-function isAntilinkEnabled(groupId) {
-    const data = dataService.getData();
-    const groupData = data.subscribedGroups[groupId];
-    return groupData && groupData.antilinkEnabled === true;
+async function isAntilinkEnabled(groupId) {
+    const group = await getGroupData(groupId);
+    return group?.antilinkEnabled === true;
 }
 
-function setAntilink(groupId, enabled) {
-    const data = dataService.getData();
-    if (!data.subscribedGroups[groupId]) {
-        data.subscribedGroups[groupId] = {
-        welcomeMessage: {  //Tambahkan welcomeMessage
-            enabled: false,
-            message: null
-        },
-          antilinkEnabled: false,
-        }; // Inisialisasi jika grup belum ada
+async function setAntilink(groupId, enabled) {
+    try {
+        const updatedGroup = await Group.findOneAndUpdate(
+            { groupId },
+            { antilinkEnabled: enabled },
+            { upsert: true, new: true, setDefaultsOnInsert: true } // upsert jika grup belum ada di DB
+        );
+        console.log(`Antilink for group ${groupId} set to ${enabled}.`);
+        return updatedGroup;
+    } catch (error) {
+        console.error(`Error setting antilink for ${groupId}:`, error);
+        return null;
     }
-    data.subscribedGroups[groupId].antilinkEnabled = enabled;
-    dataService.updateData({ subscribedGroups: data.subscribedGroups }); // Update hanya properti subscribedGroups
 }
 
 
-function getWelcomeMessage(groupId) {
-    const data = dataService.getData();
-    const groupData = data.subscribedGroups[groupId];
-    return groupData?.welcomeMessage?.message;
-
+async function getWelcomeMessage(groupId) {
+    const group = await getGroupData(groupId);
+    return group?.welcomeMessage?.message;
 }
 
-function setWelcomeMessage(groupId, message) {
-     const data = dataService.getData();
-    if (!data.subscribedGroups[groupId]) {
-        data.subscribedGroups[groupId] = {  //Tambahkan welcomeMessage
-           welcomeMessage: {
-                enabled: false,
-                message: null
+async function setWelcomeMessage(groupId, message) {
+     try {
+        const updatedGroup = await Group.findOneAndUpdate(
+            { groupId },
+            {
+                'welcomeMessage.message': message,
+                'welcomeMessage.enabled': true // Otomatis aktifkan
             },
-            antilinkEnabled: false,}; // Buat objek jika belum ada
+            { upsert: true, new: true, setDefaultsOnInsert: true } // upsert jika grup belum ada
+        );
+         console.log(`Welcome message for group ${groupId} set.`);
+        return updatedGroup;
+    } catch (error) {
+        console.error(`Error setting welcome message for ${groupId}:`, error);
+        return null;
     }
-    // Selalu buat/update objek welcomeMessage
-    data.subscribedGroups[groupId].welcomeMessage = {
-        message: message,
-        enabled: true  // Otomatis aktifkan saat pesan diatur
-    };
-      dataService.updateData({subscribedGroups: data.subscribedGroups});
 }
 
-function isWelcomeEnabled(groupId) {
-    const data = dataService.getData();
-    const groupData = data.subscribedGroups[groupId];
-    return groupData?.welcomeMessage?.enabled === true;
+async function isWelcomeEnabled(groupId) {
+    const group = await getGroupData(groupId);
+    return group?.welcomeMessage?.enabled === true;
 }
 
-function setWelcomeEnabled(groupId, enabled) {
-     const data = dataService.getData();
-    if (!data.subscribedGroups[groupId]) {
-        data.subscribedGroups[groupId] = {  //Tambahkan welcomeMessage
-            welcomeMessage: {
-                enabled: false,
-                message: null
-            },
-          antilinkEnabled: false,
-        };
+async function setWelcomeEnabled(groupId, enabled) {
+    try {
+        const updatedGroup = await Group.findOneAndUpdate(
+            { groupId },
+            { 'welcomeMessage.enabled': enabled },
+            { upsert: true, new: true, setDefaultsOnInsert: true } // upsert jika grup belum ada
+        );
+         console.log(`Welcome for group ${groupId} set to ${enabled}.`);
+        return updatedGroup;
+    } catch (error) {
+        console.error(`Error setting welcome enabled for ${groupId}:`, error);
+        return null;
     }
-    if (!data.subscribedGroups[groupId].welcomeMessage) {
-        data.subscribedGroups[groupId].welcomeMessage = { message: null, enabled: enabled }; //Set message null
-    } else {
-        data.subscribedGroups[groupId].welcomeMessage.enabled = enabled;
-    }
-     dataService.updateData({subscribedGroups: data.subscribedGroups});
 }
 
-// --- (rest of cekdata.js remains the same) ---
-function getGroupSubscriptionStatus(groupId) {
-  const data = dataService.getData();
-    const groupData = data.subscribedGroups[groupId];
-    if (!groupData) {
+async function getGroupSubscriptionStatus(groupId) {
+    const group = await getGroupData(groupId);
+    if (!group) {
         return { subscribed: false };
     }
 
-    const isSubscribed = new Date(groupData.expiration) > new Date();
+    const isSubscribed = new Date(group.expiration) > new Date();
     return {
         subscribed: isSubscribed,
-        expiryDate: groupData.expiration,
-        antilinkEnabled: groupData.antilinkEnabled === true,
-        welcomeEnabled: groupData.welcomeMessage ? groupData.welcomeMessage.enabled === true : false,
-        welcomeMessage: groupData.welcomeMessage? groupData.welcomeMessage.message : null
+        expiryDate: group.expiration,
+        antilinkEnabled: group.antilinkEnabled === true,
+        welcomeEnabled: group.welcomeMessage?.enabled === true,
+        welcomeMessage: group.welcomeMessage?.message
     };
 }
 
-async function checkSubscriptionExpiry() { //Menjadi async
-  const data = dataService.getData();
+async function checkSubscriptionExpiry() {
     const now = new Date();
     const oneDayAhead = new Date(now);
     oneDayAhead.setDate(now.getDate() + 1);
 
-    const expiringGroups = [];
-
-    for (const groupId in data.subscribedGroups) {
-        const groupData = data.subscribedGroups[groupId];
-        const expiryDate = new Date(groupData.expiration);
-
-        // Cek jika expiryDate adalah 1 hari dari sekarang (kurang dari oneDayAhead, tapi lebih dari now)
-        if (expiryDate <= oneDayAhead && expiryDate > now) {
-            expiringGroups.push({groupId, expiryDate});
-        }
+    try {
+        // Cari grup yang akan expire dalam 24 jam ke depan tapi belum expire
+        const expiringGroups = await Group.find({
+            expiration: {
+                $lte: oneDayAhead,
+                $gt: now
+            }
+        });
+        return expiringGroups.map(group => ({ groupId: group.groupId, expiryDate: group.expiration }));
+    } catch (error) {
+        console.error("Error checking subscription expiry from DB:", error);
+        return [];
     }
-    return expiringGroups;
 }
 
 module.exports = {
@@ -159,4 +158,5 @@ module.exports = {
     setWelcomeEnabled,
     getGroupSubscriptionStatus,
     checkSubscriptionExpiry,
+    getGroupData // Ekspor fungsi ini jika diperlukan di tempat lain
 };

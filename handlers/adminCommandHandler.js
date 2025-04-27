@@ -18,17 +18,22 @@ async function handleAdminCommand(client, message) {
         switch (command) {
             case config.commands.ADD_SUPERADMIN:
                 const newAdminId = arg1;
-                addSuperAdmin(newAdminId) ?
-                    message.reply(config.messages.addSuperAdminSuccess) :
+                if (await addSuperAdmin(newAdminId)) { // Tambahkan await jika addSuperAdmin async
+                    message.reply(config.messages.addSuperAdminSuccess);
+                } else {
                     message.reply(config.messages.addSuperAdminAlreadyExists);
+                }
                 break;
 
             case config.commands.REMOVE_SUPERADMIN:
                 const adminIdToRemove = arg1;
-                removeSuperAdmin(adminIdToRemove) ?
-                    message.reply(config.messages.removeSuperAdminSuccess) :
+                if (await removeSuperAdmin(adminIdToRemove)) { // Tambahkan await jika removeSuperAdmin async
+                    message.reply(config.messages.removeSuperAdminSuccess);
+                } else {
                     message.reply(config.messages.removeSuperAdminNotFound);
+                }
                 break;
+
 
             case config.commands.SUBSCRIBE:
                if (!chat.isGroup) {
@@ -37,7 +42,6 @@ async function handleAdminCommand(client, message) {
                 }
 
                 if (!arg1) {
-
                     message.reply(config.messages.subscribeFormatError);
                     return;
                 }
@@ -52,25 +56,37 @@ async function handleAdminCommand(client, message) {
 
                 try {
                     // Dapatkan status langganan saat ini
-                    const currentStatus = getGroupSubscriptionStatus(groupId);
+                    const currentStatus = await getGroupSubscriptionStatus(groupId);
                     let startDate;
 
-                    if (currentStatus.subscribed) {
+                    // Validasi currentStatus.expiryDate sebelum digunakan
+                    if (currentStatus.subscribed && currentStatus.expiryDate && !isNaN(new Date(currentStatus.expiryDate).getTime())) {
                         startDate = new Date(currentStatus.expiryDate);
                     } else {
-                        startDate = new Date();
+                        startDate = new Date(); // Jika tidak berlangganan atau tanggal tidak valid, mulai dari sekarang
                     }
 
+                    // Pastikan startDate valid sebelum melanjutkan
+                    if (isNaN(startDate.getTime())) {
+                        console.error("Invalid startDate calculated:", currentStatus);
+                        message.reply(config.messages.subscribeError); // Beri pesan error umum
+                        return;
+                    }
 
-                    const success = addSubscription(groupId, duration, startDate);
+                    const success = await addSubscription(groupId, duration, startDate);
 
                     if (success) {
-                        const newStatus = getGroupSubscriptionStatus(groupId);
-                        message.reply(config.messages.subscribeSuccess(groupId, newStatus.expiryDate));
-
+                        // --- PERBAIKAN: Tambahkan await ---
+                        const newStatus = await getGroupSubscriptionStatus(groupId);
+                        // Pastikan newStatus.expiryDate valid sebelum dikirim
+                        if (newStatus && newStatus.expiryDate && !isNaN(new Date(newStatus.expiryDate).getTime())) {
+                            message.reply(config.messages.subscribeSuccess(groupId, newStatus.expiryDate));
+                        } else {
+                             console.error("Failed to get valid new status after subscription for:", groupId);
+                             message.reply("✅ Langganan berhasil diperbarui, tetapi gagal menampilkan tanggal kedaluwarsa baru."); // Pesan fallback
+                        }
                     } else {
                          message.reply(config.messages.subscribeError);
-
                     }
                 } catch (error) {
                     console.error("Error processing subscription:", error);
@@ -83,7 +99,7 @@ async function handleAdminCommand(client, message) {
             // Tidak melakukan apa-apa
         }
     } else {
-       const superAdminOnlyCommands = [config.commands.ADD_SUPERADMIN, config.commands.REMOVE_SUPERADMIN, config.commands.SUBSCRIBE];
+        const superAdminOnlyCommands = [config.commands.ADD_SUPERADMIN, config.commands.REMOVE_SUPERADMIN, config.commands.SUBSCRIBE];
         if (superAdminOnlyCommands.some(command => message.body.startsWith(command))) {
             message.reply(config.messages.superAdminOnly);
         }
