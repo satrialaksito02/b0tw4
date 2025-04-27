@@ -1,10 +1,14 @@
 // bot.js
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
+const connectDB = require('./utils/db'); // Impor fungsi koneksi DB
 const { checkSubscriptionExpiry } = require('./utils/groupUtils');
-const { onMessage } = require('./messageHandler');  // Impor handler pesan
-const config = require('./config'); // Impor konfigurasi
+const { onMessage } = require('./messageHandler');
+const config = require('./config');
+const { isGroupSubscribed, isWelcomeEnabled, getWelcomeMessage } = require('./utils/groupUtils'); // Pindahkan impor ke atas
 
+// Hubungkan ke MongoDB saat aplikasi dimulai
+connectDB();
 
 const client = new Client({
     authStrategy: new LocalAuth(),
@@ -20,13 +24,25 @@ client.on('qr', qr => {
 
 client.on('ready', async () => {
     console.log('Client is ready!');
+    // Panggil AdminConfig.getConfig() sekali saat ready untuk memastikan dokumen ada
+    try {
+        const AdminConfig = require('./models/AdminConfig');
+        await AdminConfig.getConfig();
+        console.log('Admin config check/init complete.');
+    } catch(err) {
+        console.error('Error initializing admin config:', err);
+    }
+
 
     // Cek kadaluarsa subscription saat bot ready dan setiap 24 jam
     const checkAndNotify = async () => {
         try {
-            const expiringGroups = await checkSubscriptionExpiry(); //Harus await
+            const expiringGroups = await checkSubscriptionExpiry();
             expiringGroups.forEach(({ groupId, expiryDate }) => {
-                client.sendMessage(groupId, config.messages.subscriptionExpiryNotification(expiryDate));
+                // Gunakan format tanggal yang lebih mudah dibaca jika perlu
+                 const formattedDate = new Date(expiryDate).toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
+                 client.sendMessage(groupId, config.messages.subscriptionExpiryNotification(formattedDate));
+
             });
         } catch (error) {
             console.error("Error checking subscription expiry:", error);
@@ -34,34 +50,51 @@ client.on('ready', async () => {
     };
 
     checkAndNotify();
-    setInterval(checkAndNotify, 24 * 60 * 60 * 1000);
+    setInterval(checkAndNotify, 24 * 60 * 60 * 1000); // Setiap 24 jam
 });
 
 client.on('disconnected', (reason) => {
     console.log('Client was logged out:', reason);
-    client.initialize(); // Coba inisialisasi ulang
+    // Pertimbangkan strategi reconnect yang lebih baik jika diperlukan
+    client.initialize().catch(err => console.error('Reinitialization failed:', err));
 });
 
 // Event handler untuk pesan masuk
 client.on('message', async message => {
-    await onMessage(client, message); // Gunakan onMessage terpisah
+    // Pastikan client terhubung sebelum memproses
+    if (client.info) {
+         await onMessage(client, message);
+    } else {
+        console.log("Client not ready, skipping message.");
+    }
 });
 
 // --- Event untuk Member Baru Bergabung ---
 client.on('group_join', async (notification) => {
     try {
         const groupId = notification.chatId;
-        const { isGroupSubscribed, isWelcomeEnabled, getWelcomeMessage } = require('./utils/groupUtils');
 
-        if (isGroupSubscribed(groupId) && isWelcomeEnabled(groupId)) {
-            let welcomeMessage = getWelcomeMessage(groupId);
-            if (welcomeMessage) {
+        // Cek langganan dan status welcome dari DB
+        const subscribed = await isGroupSubscribed(groupId);
+        const welcomeEnabled = await isWelcomeEnabled(groupId);
+
+        if (subscribed && welcomeEnabled) {
+            let welcomeMsg = await getWelcomeMessage(groupId); // Ambil dari DB
+            if (welcomeMsg) {
                 const chat = await client.getChatById(groupId);
-                welcomeMessage = welcomeMessage.replace(/@user/g, `@${notification.recipientIds[0].split('@')[0]}`);
-                welcomeMessage = welcomeMessage.replace(/@grup/g, chat.name);
-                client.sendMessage(groupId, welcomeMessage, {
-                    mentions: [notification.recipientIds[0]]
-                });
+                 // Gunakan ID partisipan yang valid
+                const participantId = notification.recipientIds && notification.recipientIds.length > 0 ? notification.recipientIds[0] : null;
+
+                if (participantId) {
+                    welcomeMsg = welcomeMsg.replace(/@user/g, `@${participantId.split('@')[0]}`);
+                    welcomeMsg = welcomeMsg.replace(/@grup/g, chat.name);
+
+                    client.sendMessage(groupId, welcomeMsg, {
+                        mentions: [participantId] // Kirim mention ke participantId
+                    }).catch(err => console.error("Error sending welcome message:", err));
+                } else {
+                     console.log("Could not get participant ID for welcome message.");
+                }
             }
         }
     } catch (error) {
@@ -69,9 +102,27 @@ client.on('group_join', async (notification) => {
     }
 });
 
-client.initialize();
+client.initialize().catch(err => {
+    console.error("Client initialization failed:", err);
+    process.exit(1); // Keluar jika inisialisasi gagal total
+});
 
-process.on('SIGINT', () => {
-    console.log('Bot shutting down.');
-    process.exit();
+process.on('SIGINT', async () => {
+    console.log('Bot shutting down...');
+    try {
+        await client.destroy(); // Tutup koneksi WhatsApp
+        await mongoose.connection.close(); // Tutup koneksi DB
+        console.log('Connections closed.');
+    } catch (error) {
+        console.error('Error during shutdown:', error);
+    } finally {
+        process.exit(0);
+    }
+
+});
+
+// Tangani unhandled promise rejections
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  // Pertimbangkan untuk keluar atau melakukan recovery di sini
 });
