@@ -30,7 +30,7 @@ async function handleGroupCommand(client, message, chat) {
                 message.reply(config.messages.groupAdminOnly);
                 return;
             }
-            if (!isGroupSubscribed(groupId)) {
+            if (!groupIsSubscribed) {
                 message.reply(config.messages.groupNotSubscribed);
                 return;
             }

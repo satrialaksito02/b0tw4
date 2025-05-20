@@ -139,3 +139,332 @@ credential.json
 auth_token.json
 credential.json
 credential.json
+credential.json
+.wwebjs_auth/session/Crashpad/metadata
+.wwebjs_auth/session/Crashpad/settings.dat
+.wwebjs_auth/session/Default/Cache/Cache_Data/data_0
+.wwebjs_auth/session/Default/Cache/Cache_Data/data_1
+.wwebjs_auth/session/Default/Cache/Cache_Data/data_2
+.wwebjs_auth/session/Default/Cache/Cache_Data/data_3
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000001
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000002
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000003
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000004
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000005
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000006
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000007
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000008
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000009
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00000a
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00000b
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00000c
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00000d
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00000e
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00000f
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000010
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000011
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000012
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000013
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000014
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000015
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000016
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000017
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000018
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000019
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00001a
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00001b
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00001c
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00001d
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00001e
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00001f
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000020
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000021
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000022
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000023
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000024
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000025
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000026
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000027
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000028
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000029
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00002a
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00002b
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00002c
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00002d
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00002e
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00002f
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000030
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000031
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000032
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000033
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000034
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000035
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000036
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000037
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000038
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000039
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00003a
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00003b
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00003c
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00003d
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00003e
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00003f
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000040
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000041
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000042
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000043
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000044
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000045
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000046
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000047
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000048
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000049
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00004a
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00004b
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00004c
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00004d
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00004e
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00004f
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000050
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000051
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000052
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000053
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000054
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000055
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000056
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000057
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000058
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000059
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00005a
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00005b
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00005c
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00005d
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00005e
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00005f
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000060
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000061
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000062
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000063
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000064
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000065
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000066
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000067
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000068
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000069
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00006a
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00006b
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00006c
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00006d
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00006e
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00006f
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000070
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000071
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000072
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000073
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000074
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000075
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000076
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000077
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000078
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000079
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00007a
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00007b
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00007c
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00007d
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00007e
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00007f
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000080
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000081
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000082
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000083
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000084
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000085
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000086
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000087
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000088
+.wwebjs_auth/session/Default/Cache/Cache_Data/index
+.wwebjs_auth/session/Default/Code Cache/js/02aef595b14cc522_0
+.wwebjs_auth/session/Default/Code Cache/js/15daf029ad8770b6_0
+.wwebjs_auth/session/Default/Code Cache/js/187afe820819c658_0
+.wwebjs_auth/session/Default/Code Cache/js/19749255a344b0da_0
+.wwebjs_auth/session/Default/Code Cache/js/1aae250564966834_0
+.wwebjs_auth/session/Default/Code Cache/js/1b1a90c7ac82a882_0
+.wwebjs_auth/session/Default/Code Cache/js/22c4add8fdd89e30_0
+.wwebjs_auth/session/Default/Code Cache/js/255899f04d057141_0
+.wwebjs_auth/session/Default/Code Cache/js/292b1b11cbd88265_0
+.wwebjs_auth/session/Default/Code Cache/js/2975898e8cab2ff6_0
+.wwebjs_auth/session/Default/Code Cache/js/2cafcda9e37fa00b_0
+.wwebjs_auth/session/Default/Code Cache/js/2cd83dc699aede9f_0
+.wwebjs_auth/session/Default/Code Cache/js/308acf9fde82f0a7_0
+.wwebjs_auth/session/Default/Code Cache/js/389a912c27c2e5ca_0
+.wwebjs_auth/session/Default/Code Cache/js/393262cd62a2b235_0
+.wwebjs_auth/session/Default/Code Cache/js/3ba328455601f232_0
+.wwebjs_auth/session/Default/Code Cache/js/3e7674a7f0731e1b_0
+.wwebjs_auth/session/Default/Code Cache/js/42938f6eefd7e0b1_0
+.wwebjs_auth/session/Default/Code Cache/js/43bb2ed2028953d7_0
+.wwebjs_auth/session/Default/Code Cache/js/4626d04af0d5e82b_0
+.wwebjs_auth/session/Default/Code Cache/js/48998f88dc2a8544_0
+.wwebjs_auth/session/Default/Code Cache/js/5150d907f7517e9e_0
+.wwebjs_auth/session/Default/Code Cache/js/5686eaf91bee85da_0
+.wwebjs_auth/session/Default/Code Cache/js/56bd7975d6cd6f19_0
+.wwebjs_auth/session/Default/Code Cache/js/5a53a77e69d73b51_0
+.wwebjs_auth/session/Default/Code Cache/js/60c1259c548ec51c_0
+.wwebjs_auth/session/Default/Code Cache/js/612c8ed5df91f9fe_0
+.wwebjs_auth/session/Default/Code Cache/js/662dfec53ceddf14_0
+.wwebjs_auth/session/Default/Code Cache/js/66ff43ccfef93883_0
+.wwebjs_auth/session/Default/Code Cache/js/675b213a86076853_0
+.wwebjs_auth/session/Default/Code Cache/js/67bf7ed054ce78d3_0
+.wwebjs_auth/session/Default/Code Cache/js/6a72b0e4976609c4_0
+.wwebjs_auth/session/Default/Code Cache/js/705592d562597b11_0
+.wwebjs_auth/session/Default/Code Cache/js/708aae6504d05c69_0
+.wwebjs_auth/session/Default/Code Cache/js/70eda10a6abc148c_0
+.wwebjs_auth/session/Default/Code Cache/js/7c6d8c06e3bcf4ae_0
+.wwebjs_auth/session/Default/Code Cache/js/7cf0ca759d01385f_0
+.wwebjs_auth/session/Default/Code Cache/js/7d9e55310bb38934_0
+.wwebjs_auth/session/Default/Code Cache/js/8167c6cac9a75d56_0
+.wwebjs_auth/session/Default/Code Cache/js/8a05748998ed693f_0
+.wwebjs_auth/session/Default/Code Cache/js/8b05ee43a3cdcd94_0
+.wwebjs_auth/session/Default/Code Cache/js/92b2998ea4c9b30b_0
+.wwebjs_auth/session/Default/Code Cache/js/95655cc28aab719b_0
+.wwebjs_auth/session/Default/Code Cache/js/97fb773677174dd3_0
+.wwebjs_auth/session/Default/Code Cache/js/98f28673949f319c_0
+.wwebjs_auth/session/Default/Code Cache/js/9c7d20711790641a_0
+.wwebjs_auth/session/Default/Code Cache/js/9ceed1adfd4c0627_0
+.wwebjs_auth/session/Default/Code Cache/js/9f68afbf0e8ed8c4_0
+.wwebjs_auth/session/Default/Code Cache/js/a1d563286567d97a_0
+.wwebjs_auth/session/Default/Code Cache/js/a35fe0436c4f6e90_0
+.wwebjs_auth/session/Default/Code Cache/js/a579e602011b0855_0
+.wwebjs_auth/session/Default/Code Cache/js/a6c42df992af465f_0
+.wwebjs_auth/session/Default/Code Cache/js/a6ef61093fc95f78_0
+.wwebjs_auth/session/Default/Code Cache/js/a7bd78236b890cb0_0
+.wwebjs_auth/session/Default/Code Cache/js/aaafd9b1eb8c7dbd_0
+.wwebjs_auth/session/Default/Code Cache/js/ac10131da2653945_0
+.wwebjs_auth/session/Default/Code Cache/js/afb274a5775724c9_0
+.wwebjs_auth/session/Default/Code Cache/js/b05710fde2cc5308_0
+.wwebjs_auth/session/Default/Code Cache/js/b096092ed1b09442_0
+.wwebjs_auth/session/Default/Code Cache/js/b1fea3eea56b8a45_0
+.wwebjs_auth/session/Default/Code Cache/js/b2a0076acd9ed29e_0
+.wwebjs_auth/session/Default/Code Cache/js/b47929f0a8b4c12e_0
+.wwebjs_auth/session/Default/Code Cache/js/b482fc27ed8dbf3f_0
+.wwebjs_auth/session/Default/Code Cache/js/b6e91c7404c9f67f_0
+.wwebjs_auth/session/Default/Code Cache/js/b8807539a871a9fe_0
+.wwebjs_auth/session/Default/Code Cache/js/bc3e31b3080c727d_0
+.wwebjs_auth/session/Default/Code Cache/js/c4be5e3e1b8dc0ca_0
+.wwebjs_auth/session/Default/Code Cache/js/c78cb66044e6386d_0
+.wwebjs_auth/session/Default/Code Cache/js/d10c8cdf2687e7d6_0
+.wwebjs_auth/session/Default/Code Cache/js/d2248e00c6379148_0
+.wwebjs_auth/session/Default/Code Cache/js/d2a7c99d23a1b6e1_0
+.wwebjs_auth/session/Default/Code Cache/js/d48aa2f23b030a17_0
+.wwebjs_auth/session/Default/Code Cache/js/d75a56f53618571e_0
+.wwebjs_auth/session/Default/Code Cache/js/dda9e8c9a2c36c14_0
+.wwebjs_auth/session/Default/Code Cache/js/e37300f62aac0086_0
+.wwebjs_auth/session/Default/Code Cache/js/eab77b3be1ca8580_0
+.wwebjs_auth/session/Default/Code Cache/js/eae76a10044fc98d_0
+.wwebjs_auth/session/Default/Code Cache/js/ed03ff693a96e99f_0
+.wwebjs_auth/session/Default/Code Cache/js/ee6c130c15611097_0
+.wwebjs_auth/session/Default/Code Cache/js/efd1ee2094a3515c_0
+.wwebjs_auth/session/Default/Code Cache/js/f03d0ef3e428f8a4_0
+.wwebjs_auth/session/Default/Code Cache/js/f181bda9b86afc13_0
+.wwebjs_auth/session/Default/Code Cache/js/f1a958d026c67e8a_0
+.wwebjs_auth/session/Default/Code Cache/js/f30cc85369813628_0
+.wwebjs_auth/session/Default/Code Cache/js/f3c0a6c2d0e3ce67_0
+.wwebjs_auth/session/Default/Code Cache/js/f7dab3464579deb1_0
+.wwebjs_auth/session/Default/Code Cache/js/f7e5a339b672ad5d_0
+.wwebjs_auth/session/Default/Code Cache/js/fbf7d567b3a597fe_0
+.wwebjs_auth/session/Default/Code Cache/js/fcd88a144a66d35f_0
+.wwebjs_auth/session/Default/Code Cache/js/index
+.wwebjs_auth/session/Default/Code Cache/js/index-dir/the-real-index
+.wwebjs_auth/session/Default/Code Cache/wasm/index
+.wwebjs_auth/session/Default/Code Cache/wasm/index-dir/the-real-index
+.wwebjs_auth/session/Default/Cookies
+.wwebjs_auth/session/Default/Cookies-journal
+.wwebjs_auth/session/Default/databases/Databases.db
+.wwebjs_auth/session/Default/databases/Databases.db-journal
+.wwebjs_auth/session/Default/DawnCache/data_0
+.wwebjs_auth/session/Default/DawnCache/data_1
+.wwebjs_auth/session/Default/DawnCache/data_2
+.wwebjs_auth/session/Default/DawnCache/data_3
+.wwebjs_auth/session/Default/DawnCache/index
+.wwebjs_auth/session/Default/GPUCache/data_0
+.wwebjs_auth/session/Default/GPUCache/data_1
+.wwebjs_auth/session/Default/GPUCache/data_2
+.wwebjs_auth/session/Default/GPUCache/data_3
+.wwebjs_auth/session/Default/GPUCache/index
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001377.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001380.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001381.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001389.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001390.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001391.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001392.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001393.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001394.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001395.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001396.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001397.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001398.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001399.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001400.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/CURRENT
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/LOCK
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/LOG
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/LOG.old
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+.wwebjs_auth/session/Default/Local Storage/leveldb/000010.ldb
+.wwebjs_auth/session/Default/Local Storage/leveldb/CURRENT
+.wwebjs_auth/session/Default/Local Storage/leveldb/LOCK
+.wwebjs_auth/session/Default/Local Storage/leveldb/LOG
+.wwebjs_auth/session/Default/Local Storage/leveldb/LOG.old
+.wwebjs_auth/session/Default/Local Storage/leveldb/MANIFEST-000001
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/28fb0181-d5af-424f-b8b5-1ac96e420588/index
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/28fb0181-d5af-424f-b8b5-1ac96e420588/index-dir/the-real-index
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/2b74862a-06f4-40ee-a49b-1261a8e010e3/03742416ce145211_0
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/2b74862a-06f4-40ee-a49b-1261a8e010e3/048c35023f2e9c46_0
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/2b74862a-06f4-40ee-a49b-1261a8e010e3/6f79d184e2d506d5_0
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/2b74862a-06f4-40ee-a49b-1261a8e010e3/a26a6b9b6ad4aebb_0
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/2b74862a-06f4-40ee-a49b-1261a8e010e3/index
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/2b74862a-06f4-40ee-a49b-1261a8e010e3/index-dir/the-real-index
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/d94cbc61-4190-4cbd-bc90-f9a0f8e607ea/2a2b7cbbc61290b4_0
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/d94cbc61-4190-4cbd-bc90-f9a0f8e607ea/6ea66fa5b36b4157_0
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/d94cbc61-4190-4cbd-bc90-f9a0f8e607ea/92172a9e586cee2a_0
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/d94cbc61-4190-4cbd-bc90-f9a0f8e607ea/e6039a61e4d2a504_0
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/d94cbc61-4190-4cbd-bc90-f9a0f8e607ea/index
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/d94cbc61-4190-4cbd-bc90-f9a0f8e607ea/index-dir/the-real-index
+.wwebjs_auth/session/Default/Service Worker/CacheStorage/0bf6ab7f94a21cdc9c1649f884333ec20f40a544/index.txt
+.wwebjs_auth/session/Default/Service Worker/Database/CURRENT
+.wwebjs_auth/session/Default/Service Worker/Database/LOCK
+.wwebjs_auth/session/Default/Service Worker/Database/LOG
+.wwebjs_auth/session/Default/Service Worker/Database/LOG.old
+.wwebjs_auth/session/Default/Service Worker/Database/MANIFEST-000001
+.wwebjs_auth/session/Default/Service Worker/ScriptCache/08b99d499107ba17_0
+.wwebjs_auth/session/Default/Service Worker/ScriptCache/08b99d499107ba17_1
+.wwebjs_auth/session/Default/Service Worker/ScriptCache/7b4fd8111178d5b1_0
+.wwebjs_auth/session/Default/Service Worker/ScriptCache/7b4fd8111178d5b1_1
+.wwebjs_auth/session/Default/Service Worker/ScriptCache/index
+.wwebjs_auth/session/Default/Service Worker/ScriptCache/index-dir/the-real-index
+.wwebjs_auth/session/Default/Session Storage/CURRENT
+.wwebjs_auth/session/Default/Session Storage/LOCK
+.wwebjs_auth/session/Default/Session Storage/LOG
+.wwebjs_auth/session/Default/Session Storage/LOG.old
+.wwebjs_auth/session/Default/Session Storage/MANIFEST-000001
+.wwebjs_auth/session/Default/shared_proto_db/CURRENT
+.wwebjs_auth/session/Default/shared_proto_db/LOCK
+.wwebjs_auth/session/Default/shared_proto_db/LOG
+.wwebjs_auth/session/Default/shared_proto_db/LOG.old
+.wwebjs_auth/session/Default/shared_proto_db/MANIFEST-000001
+.wwebjs_auth/session/Default/shared_proto_db/metadata/CURRENT
+.wwebjs_auth/session/Default/shared_proto_db/metadata/LOCK
+.wwebjs_auth/session/Default/shared_proto_db/metadata/LOG
+.wwebjs_auth/session/Default/shared_proto_db/metadata/LOG.old
+.wwebjs_auth/session/Default/shared_proto_db/metadata/MANIFEST-000001
+.wwebjs_auth/session/Default/VideoDecodeStats/LOCK
+.wwebjs_auth/session/Default/VideoDecodeStats/LOG
+.wwebjs_auth/session/Default/VideoDecodeStats/LOG.old
+.wwebjs_auth/session/Default/WebStorage/QuotaManager
+.wwebjs_auth/session/Default/WebStorage/QuotaManager-journal
+.wwebjs_auth/session/DevToolsActivePort
+.wwebjs_cache/2.3000.1022950773.html
+.wwebjs_cache/2.3000.1022982921.html
+.wwebjs_cache/2.3000.1023001845.html
+credential.json
+credential.json
