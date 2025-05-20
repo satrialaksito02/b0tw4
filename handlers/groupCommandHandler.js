@@ -24,6 +24,20 @@ async function handleGroupCommand(client, message, chat) {
     // --- PERBAIKAN: Gunakan await saat cek langganan di awal ---
     const groupIsSubscribed = await isGroupSubscribed(groupId);
 
+    // Only allow commands if the sender is an admin
+    if (!isAdmin) {
+        // For commands that are admin-only but don't have a specific admin check below
+        const adminOnlyCommands = [
+            config.commands.HIDETAG, config.commands.ANTILINK,
+            config.commands.WELCOME, config.commands.SET_WELCOME,
+            config.commands.OPEN_GROUP, config.commands.CLOSE_GROUP
+        ];
+        if (adminOnlyCommands.includes(command)) {
+            message.reply(config.messages.groupAdminOnly);
+            return;
+        }
+    }
+
     switch (command) {
         case config.commands.HIDETAG:
             if (!isAdmin) {
@@ -132,32 +146,63 @@ async function handleGroupCommand(client, message, chat) {
                  }
             break;
 
+        case config.commands.OPEN_GROUP:
+            if (!isAdmin) {
+                message.reply(config.messages.groupAdminOnly);
+                return;
+            }
+            if (!groupIsSubscribed) {
+                message.reply(config.messages.groupNotSubscribed);
+                return;
+            }
+            try {
+                await chat.setMessagesAdminsOnly(false);
+                const openMessage = arg ? arg : config.messages.groupOpened;
+                await chat.sendMessage(openMessage);
+            } catch (error) {
+                console.error(`Error opening group ${groupId}:`, error);
+                message.reply(config.messages.generalError);
+            }
+            break;
+
+        case config.commands.CLOSE_GROUP:
+            if (!isAdmin) {
+                message.reply(config.messages.groupAdminOnly);
+                return;
+            }
+            if (!groupIsSubscribed) {
+                message.reply(config.messages.groupNotSubscribed);
+                return;
+            }
+            try {
+                await chat.setMessagesAdminsOnly(true);
+                const closeMessage = arg ? `${arg}\n\nSilahkan hubungi admin untuk informasi yang anda perlukan.` : config.messages.groupClosed;
+                await chat.sendMessage(closeMessage);
+            } catch (error) {
+                console.error(`Error closing group ${groupId}:`, error);
+                message.reply(config.messages.generalError);
+            }
+            break;
+            
       default:
-            // --- PERBAIKAN: Tambahkan await untuk cek antilink ---
-           const antilinkOn = await isAntilinkEnabled(groupId);
-           // Cek link hanya jika grup berlangganan DAN antilink aktif
+           const antilinkOn = await isAntilinkEnabled(groupId); //
            if (groupIsSubscribed && antilinkOn && linkRegex.test(message.body) && !isAdmin) {
-                // --- PERBAIKAN: Tambahkan await jika addViolation async ---
-                const violationCount = await antispamService.addViolation(groupId, senderId);
-                await message.delete(true); // Hapus pesan pelanggaran
+                const violationCount = await antispamService.addViolation(groupId, senderId); //
+                await message.delete(true); 
 
                 if (violationCount === 1) {
-                    await chat.sendMessage(config.messages.antilinkFirstWarning(senderId), { mentions: [senderId] }); // Mention senderId
+                    await chat.sendMessage(config.messages.antilinkFirstWarning(senderId), { mentions: [senderId] }); //
                 } else if (violationCount > 1) {
-                    await chat.sendMessage(config.messages.antilinkKickWarning(senderId), { mentions: [senderId] }); // Mention senderId
-                    await new Promise(resolve => setTimeout(resolve, 2000)); // Tunggu 2 detik
+                    await chat.sendMessage(config.messages.antilinkKickWarning(senderId), { mentions: [senderId] }); //
+                    await new Promise(resolve => setTimeout(resolve, 2000)); 
                      try {
-                        await chat.removeParticipants([senderId]); // Keluarkan pelanggar
-                         // --- PERBAIKAN: Tambahkan await jika resetViolation async ---
-                        await antispamService.resetViolation(groupId, senderId); // Reset count setelah kick
+                        await chat.removeParticipants([senderId]); 
+                        await antispamService.resetViolation(groupId, senderId); 
                      } catch (removeError) {
                          console.error(`Failed to remove participant ${senderId} from group ${groupId}:`, removeError);
-                         // Mungkin bot bukan admin lagi? Kirim pesan info jika gagal kick.
-                         // await chat.sendMessage(`Gagal mengeluarkan @${senderId.split('@')[0]}.`, { mentions: [senderId] });
                      }
                 }
             }
-            // Tidak ada perintah yang cocok
     }
 }
 
