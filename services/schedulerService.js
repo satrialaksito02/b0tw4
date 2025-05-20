@@ -6,12 +6,36 @@ const config = require('../config');
 let schedulerIntervalId = null;
 let whatsappClient = null;
 
+function isWithinWorkingHours() {
+    const now = new Date();
+    const options = { timeZone: config.workingHours.timeZone, hour12: false };
+    const currentHour = parseInt(now.toLocaleTimeString('en-US', { ...options, hour: '2-digit' }));
+    const currentDay = now.getDay(); // 0 (Minggu) - 6 (Sabtu)
+
+    const { startHour, endHour, activeDays } = config.workingHours;
+
+    if (!activeDays.includes(currentDay)) {
+        return false; // Tidak dalam hari kerja
+    }
+
+    if (currentHour >= startHour && currentHour < endHour) {
+        return true; // Dalam jam kerja
+    }
+    return false; // Di luar jam kerja
+}
+
 async function checkAndSendMessages() {
     if (!whatsappClient) {
         console.warn("Scheduler: WhatsApp client not available.");
         return;
     }
-    console.log("Scheduler: Checking for automated messages to send...");
+
+    if (!isWithinWorkingHours()) {
+        console.log("Scheduler: Currently outside working hours. Skipping automated messages.");
+        return;
+    }
+
+    console.log("Scheduler: Checking for automated messages to send (within working hours)...");
 
     try {
         const activeSchedules = await AutomatedMessage.find({ isEnabled: true });
@@ -20,10 +44,7 @@ async function checkAndSendMessages() {
             // Periksa apakah grup target masih berlangganan
             const groupStillSubscribed = await isGroupSubscribed(schedule.targetGroupId);
             if (!groupStillSubscribed) {
-                console.log(`Scheduler: Group ${schedule.targetGroupName} (${schedule.targetGroupId}) for schedule ${schedule.scheduleName} is no longer subscribed. Skipping.`);
-                // Opsional: nonaktifkan jadwal ini
-                // schedule.isEnabled = false;
-                // await schedule.save();
+                console.log(`Scheduler: Group <span class="math-inline">\{schedule\.targetGroupName\} \(</span>{schedule.targetGroupId}) for schedule ${schedule.scheduleName} is no longer subscribed. Skipping.`);
                 continue;
             }
 
@@ -44,7 +65,7 @@ async function checkAndSendMessages() {
             const now = new Date();
             let shouldSend = false;
 
-            if (!schedule.lastSentGlobal) { // Jika belum pernah kirim sama sekali (jadwal baru)
+            if (!schedule.lastSentGlobal) {
                 shouldSend = true;
             } else {
                 const nextScheduledTime = new Date(schedule.lastSentGlobal.getTime() + intervalMillis);
@@ -55,18 +76,16 @@ async function checkAndSendMessages() {
 
             if (shouldSend) {
                 try {
-                    console.log(`Scheduler: Sending message "${messageToSend.text}" from schedule "${schedule.scheduleName}" to group "${schedule.targetGroupName}".`);
+                    console.log(`Scheduler: Sending message "<span class="math-inline">\{messageToSend\.text\}" from schedule "</span>{schedule.scheduleName}" to group "${schedule.targetGroupName}".`);
                     await whatsappClient.sendMessage(schedule.targetGroupId, messageToSend.text);
 
-                    // Update schedule
                     schedule.lastSentGlobal = new Date();
-                    schedule.currentMessageIndex = (schedule.currentMessageIndex + 1) % schedule.messages.length; // Berpindah ke pesan berikutnya, kembali ke 0 jika sudah terakhir
+                    schedule.currentMessageIndex = (schedule.currentMessageIndex + 1) % schedule.messages.length;
                     await schedule.save();
                     console.log(`Scheduler: Message sent and schedule ${schedule.scheduleName} updated.`);
 
                 } catch (sendError) {
                     console.error(`Scheduler: Error sending message for schedule ${schedule.scheduleName} to ${schedule.targetGroupId}:`, sendError);
-                    // Pertimbangkan untuk menonaktifkan jadwal jika gagal mengirim beberapa kali
                 }
             }
         }
@@ -81,10 +100,8 @@ function initializeScheduler(client) {
         return;
     }
     whatsappClient = client;
-    // Jalankan pengecekan pertama kali segera (atau setelah jeda singkat)
-    setTimeout(checkAndSendMessages, 5000); // Jeda 5 detik setelah bot ready
-    // Atur interval pengecekan
-    schedulerIntervalId = setInterval(checkAndSendMessages, config.automatedMessageCheckInterval); // Ambil dari config
+    setTimeout(checkAndSendMessages, 5000);
+    schedulerIntervalId = setInterval(checkAndSendMessages, config.automatedMessageCheckInterval);
     console.log(`Scheduler: Initialized with interval ${config.automatedMessageCheckInterval / 1000} seconds.`);
 }
 
@@ -92,7 +109,7 @@ function stopScheduler() {
     if (schedulerIntervalId) {
         clearInterval(schedulerIntervalId);
         schedulerIntervalId = null;
-        whatsappClient = null; // Hapus referensi client
+        whatsappClient = null;
         console.log("Scheduler: Stopped.");
     }
 }

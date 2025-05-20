@@ -7,52 +7,116 @@ const AutomatedMessage = require('../models/AutomatedMessage');
 const userStates = {};
 
 async function handleAutomatedMessageCommand(client, message, senderId) {
-    if (!(await isSuperAdmin(senderId))) {
-        return message.reply(config.messages.superAdminOnly);
+    if (!(await isSuperAdmin(senderId))) { //
+        return message.reply(config.messages.superAdminOnly); //
     }
 
     const parts = message.body.trim().split(" ");
     const subCommand = parts[1] ? parts[1].toLowerCase() : null;
-    const argument = parts.slice(2).join(" "); // Ini akan menjadi scheduleName untuk banyak sub-perintah
-    const userInput = message.body.trim();
+    const scheduleNameArg = parts[2]; // Argumen pertama setelah sub-perintah
+    const messageNumberArg = parts[3]; // Argumen kedua setelah sub-perintah
+    // `argument` masih bisa digunakan untuk perintah yang hanya mengambil satu argumen setelah sub-command
+    const argument = parts.slice(2).join(" ");
+
 
     const currentState = userStates[senderId];
 
-    if (currentState && userInput.toLowerCase() === 'batal') {
-        const scheduleName = currentState.scheduleName;
-        delete userStates[senderId];
-        if (currentState.currentCommand === 'addmsg') {
-            return message.reply(config.messages.autotextAddingMessageCancelled(scheduleName || "yang dipilih"));
+    if (currentState && message.body.trim().toLowerCase() === 'batal') { //
+        const scheduleName = currentState.scheduleName; //
+        delete userStates[senderId]; //
+        if (currentState.currentCommand === 'addmsg') { //
+            return message.reply(config.messages.autotextAddingMessageCancelled(scheduleName || "yang dipilih")); //
         }
-        return message.reply("Pembuatan/konfigurasi jadwal dibatalkan.");
+        return message.reply("Pembuatan/konfigurasi jadwal dibatalkan."); //
     }
 
-    if (currentState) {
-        await handleOngoingConfiguration(client, message, senderId, currentState, userInput);
+    if (currentState) { //
+        await handleOngoingConfiguration(client, message, senderId, currentState, message.body.trim()); //
     } else {
         switch (subCommand) {
             case 'tambah':
-                await startAddNewSchedule(client, message, senderId, argument);
+                await startAddNewSchedule(client, message, senderId, scheduleNameArg); // Gunakan scheduleNameArg
                 break;
-            case 'addmsg': // Sub-perintah baru
-                await startAddMessageToExistingSchedule(client, message, senderId, argument);
+            case 'addmsg':
+                await startAddMessageToExistingSchedule(client, message, senderId, scheduleNameArg); // Gunakan scheduleNameArg
+                break;
+            case 'hapuspesan': // Perintah baru
+                await deleteMessageFromSchedule(client, message, senderId, scheduleNameArg, messageNumberArg);
                 break;
             case 'list':
-                await listSchedules(client, message, senderId);
+                await listSchedules(client, message, senderId); //
                 break;
             case 'hapus':
-                await deleteSchedule(client, message, senderId, argument);
+                await deleteSchedule(client, message, senderId, scheduleNameArg); // Gunakan scheduleNameArg
                 break;
             case 'detail':
-                await detailSchedule(client, message, senderId, argument);
+                await detailSchedule(client, message, senderId, scheduleNameArg); // Gunakan scheduleNameArg
                 break;
-            case 'on':
-            case 'off':
-                await toggleScheduleStatus(client, message, senderId, argument, subCommand === 'on');
+            case 'on': //
+            case 'off': //
+                await toggleScheduleStatus(client, message, senderId, scheduleNameArg, subCommand === 'on'); // Gunakan scheduleNameArg
                 break;
             default:
-                message.reply(config.messages.autotextHelp());
+                message.reply(config.messages.autotextHelp()); //
         }
+    }
+}
+
+
+async function deleteMessageFromSchedule(client, message, senderId, scheduleName, messageNumberStr) {
+    if (!scheduleName || !messageNumberStr) {
+        return message.reply(config.messages.autotextDeleteMessageFormatError(config.commands.AUTOTEXT));
+    }
+
+    const messageNumber = parseInt(messageNumberStr, 10);
+    if (isNaN(messageNumber) || messageNumber <= 0) {
+        return message.reply(config.messages.autotextMessageNotFoundOrInvalidNumber(messageNumberStr));
+    }
+
+    const messageIndexToRemove = messageNumber - 1; // Konversi ke 0-based index
+
+    try {
+        const schedule = await AutomatedMessage.findOne({ scheduleName: scheduleName, creatorId: senderId });
+        if (!schedule) {
+            return message.reply(config.messages.autotextScheduleNotFound(scheduleName) + " atau Anda tidak memiliki izin untuk mengubahnya.");
+        }
+
+        if (messageIndexToRemove < 0 || messageIndexToRemove >= schedule.messages.length) {
+            return message.reply(config.messages.autotextMessageNotFoundOrInvalidNumber(messageNumber));
+        }
+
+        const oldCurrentIndex = schedule.currentMessageIndex;
+        schedule.messages.splice(messageIndexToRemove, 1); // Hapus pesan dari array
+
+        if (schedule.messages.length === 0) {
+            schedule.currentMessageIndex = 0;
+            schedule.lastSentGlobal = null; // Reset juga waktu pengiriman terakhir
+            await schedule.save();
+            message.reply(config.messages.autotextMessageDeleted(messageNumber, scheduleName));
+            return message.reply(config.messages.autotextScheduleEmptyAfterDeletion(scheduleName));
+        } else {
+            // Sesuaikan currentMessageIndex jika perlu
+            if (messageIndexToRemove < oldCurrentIndex) {
+                schedule.currentMessageIndex = oldCurrentIndex - 1;
+            } else if (messageIndexToRemove === oldCurrentIndex) {
+                // Jika pesan yang dihapus adalah pesan saat ini,
+                // currentMessageIndex akan menunjuk ke pesan berikutnya pada posisi yang sama (atau wrap around)
+                schedule.currentMessageIndex = oldCurrentIndex % schedule.messages.length;
+            }
+            // Jika messageIndexToRemove > oldCurrentIndex, schedule.currentMessageIndex tidak berubah relatif terhadap pesan yang tersisa
+
+            // Pastikan currentMessageIndex selalu valid
+            if (schedule.currentMessageIndex >= schedule.messages.length) {
+                schedule.currentMessageIndex = 0;
+            }
+        }
+        schedule.updatedAt = new Date();
+        await schedule.save();
+        return message.reply(config.messages.autotextMessageDeleted(messageNumber, scheduleName));
+
+    } catch (error) {
+        console.error(`Error deleting message from schedule ${scheduleName}:`, error);
+        message.reply(config.messages.processingError);
     }
 }
 

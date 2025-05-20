@@ -63,10 +63,11 @@ module.exports = {
         subscribeSuccess: (groupId, expiryDate) => `✅ Langganan grup berhasil diperbarui! Masa aktif berlaku hingga: ${new Date(expiryDate).toLocaleString()}`,
         subscribeError: "❌ Terjadi kesalahan saat memperbarui langganan. Silakan coba lagi.",
         autotextCommandOnlyForPC: 'ℹ Perintah `!automsg` hanya dapat digunakan melalui pesan pribadi (PC) dengan bot.',
-        autotextHelp: () => "「 \`AUTO MSG HELPER\` 」\n\n" +
+        autotextHelp: () => "「 `AUTO MSG HELPER` 」\n\n" +
                           "Gunakan perintah berikut untuk mengelola pesan otomatis:\n\n" +
                           "`!automsg tambah <nama_jadwal>` - Membuat jadwal baru.\n" +
-                          "`!automsg addmsg <nama_jadwal>` - Menambah pesan ke jadwal yang ada.\n" + // <-- Perintah baru ditambahkan di sini
+                          "`!automsg addmsg <nama_jadwal>` - Menambah pesan ke jadwal yang ada.\n" +
+                          "`!automsg hapuspesan <nama_jadwal> <nomor_pesan>` - Menghapus pesan tertentu dari jadwal.\n" + // <-- Perintah baru
                           "`!automsg list` - Melihat semua jadwal.\n" +
                           "`!automsg hapus <nama_jadwal>` - Menghapus jadwal.\n" +
                           "`!automsg detail <nama_jadwal>` - Melihat detail jadwal.\n" +
@@ -88,8 +89,19 @@ module.exports = {
         autotextEnterMessageForExisting: (scheduleName, messageNumber) => `Menambahkan pesan ke jadwal \`${scheduleName}\`.\nMasukkan teks untuk pesan ke-${messageNumber}:`,
         autotextMessageAddedToSchedule: (scheduleName) => `✅ Pesan baru berhasil ditambahkan ke jadwal \`${scheduleName}\`.`,
         autotextAddingMessageCancelled: (scheduleName) => `ℹ Penambahan pesan ke jadwal \`${scheduleName}\` dibatalkan.`,
+        autotextDeleteMessageFormatError: (command) => `⚠️ Format perintah salah. Gunakan: \`${command} hapuspesan <nama_jadwal> <nomor_pesan>\`\nContoh: \`${command} hapuspesan PromoPagi 2\``,
+        autotextMessageNotFoundOrInvalidNumber: (messageNumber) => `ℹ️ Pesan dengan nomor ${messageNumber} tidak ditemukan atau nomor tidak valid. Gunakan \`!automsg detail <nama_jadwal>\` untuk melihat daftar pesan.`,
+        autotextMessageDeleted: (messageNumber, scheduleName) => `✅ Pesan ke-${messageNumber} berhasil dihapus dari jadwal \`${scheduleName}\`.`,
+        autotextScheduleEmptyAfterDeletion: (scheduleName) => `ℹ️ Jadwal \`${scheduleName}\` sekarang kosong setelah pesan dihapus. Anda mungkin ingin menambahkan pesan baru atau menghapus jadwal ini.`,
     },
     defaultSuperAdmins: ["62895410219991@c.us", "xxxxxxxx-yyyyyyyy@c.us"],
     mongoURI: 'mongodb+srv://adilaksito:i2sQLt877qd56Hip@b0tw4.s7vlwih.mongodb.net/?retryWrites=true&w=majority&appName=b0tw4',
-    automatedMessageCheckInterval: 60000, // Interval pengecekan scheduler (ms), contoh: 1 menit
+    workingHours: {
+        startHour: 6, // Jam mulai (format 24 jam, contoh: 08:00)
+        endHour: 23,   // Jam selesai (format 24 jam, contoh: 17:00)
+        // Hari aktif: 0 = Minggu, 1 = Senin, ..., 6 = Sabtu
+        activeDays: [0, 1, 2, 3, 4, 5, 6], // Senin sampai Jumat
+        timeZone: 'Asia/Jakarta' // Tambahkan timezone
+    },
+    automatedMessageCheckInterval: 300000, // Interval pengecekan scheduler (ms), contoh: 1 menit
 };

@@ -492,3 +492,5 @@ credential.json
 .wwebjs_auth/session/Default/Service Worker/ScriptCache/f13a76bbf6c7f0b3_0
 .wwebjs_auth/session/Default/Service Worker/ScriptCache/f13a76bbf6c7f0b3_1
 .wwebjs_cache/2.3000.1023003555.html
+/.wwebjs_auth
+/.wwebjs_cache
