@@ -11,6 +11,7 @@ module.exports = {
         WELCOME: "welcome",
         STATUS: "status",
         YOUTUBE: "youtube", // Perintah dasar untuk perpanjangan YouTube
+        AUTOTEXT: "!automsg", // Perintah utama untuk automated text
     },
     messages: {
         privateAutoReply: () => "「 \`PESAN BOT LX DIGITAL\` 」\n\n🤖 Ini adalah balasan otomatis BOT.\n\n💎 *Perpanjang Akun Youtube Premium Anda:*\n👉 Ketik: `youtube <durasi> <email Anda>`\n      Contoh: ```youtube 3bln contoh@gmail.com```\n\n📞 *Butuh bantuan?* Hubungi Admin di wa.me/6287829708498\nTerima kasih!",
@@ -61,7 +62,34 @@ module.exports = {
         subscribeDurationError: "⚠️ Durasi sewa harus berupa angka dan lebih dari 0 (dalam satuan hari).",
         subscribeSuccess: (groupId, expiryDate) => `✅ Langganan grup berhasil diperbarui! Masa aktif berlaku hingga: ${new Date(expiryDate).toLocaleString()}`,
         subscribeError: "❌ Terjadi kesalahan saat memperbarui langganan. Silakan coba lagi.",
+        autotextCommandOnlyForPC: 'ℹ Perintah `!automsg` hanya dapat digunakan melalui pesan pribadi (PC) dengan bot.',
+        autotextHelp: () => "「 \`AUTO MSG HELPER\` 」\n\n" +
+                          "Gunakan perintah berikut untuk mengelola pesan otomatis:\n\n" +
+                          "`!automsg tambah <nama_jadwal>` - Membuat jadwal baru.\n" +
+                          "`!automsg addmsg <nama_jadwal>` - Menambah pesan ke jadwal yang ada.\n" + // <-- Perintah baru ditambahkan di sini
+                          "`!automsg list` - Melihat semua jadwal.\n" +
+                          "`!automsg hapus <nama_jadwal>` - Menghapus jadwal.\n" +
+                          "`!automsg detail <nama_jadwal>` - Melihat detail jadwal.\n" +
+                          "`!automsg <on|off> <nama_jadwal>` - Mengaktifkan/menonaktifkan jadwal.",
+        autotextChooseGroup: (groupsList) => `Silakan pilih grup target untuk jadwal ini:\n${groupsList}\nKetik nomor grup:`,
+        autotextNoSubscribedGroups: 'ℹ Tidak ada grup berlangganan yang ditemukan untuk dijadikan target.',
+        autotextInvalidGroupSelection: '⚠️ Pilihan grup tidak valid.',
+        autotextEnterMessage: (scheduleName, messageNumber) => `Masukkan teks untuk pesan ke-${messageNumber} pada jadwal \`${scheduleName}\`:`,
+        autotextEnterInterval: (messageNumber) => `Atur interval pengiriman untuk pesan ke-${messageNumber} (contoh: \`30m\` untuk 30 menit, \`2h\` untuk 2 jam, \`1d\` untuk 1 hari):`,
+        autotextInvalidIntervalFormat: '⚠️ Format interval tidak valid. Gunakan angka diikuti `m` (menit), `h` (jam), atau `d` (hari). Contoh: `30m`, `1h`, `2d`.',
+        autotextAddMoreMessages: (scheduleName) => `Apakah ada pesan lain untuk jadwal \`${scheduleName}\`? (ketik \`ya\` atau \`tidak\`)`,
+        autotextScheduleSaved: (scheduleName, groupName) => `✅ Jadwal automated text \`${scheduleName}\` untuk grup \`${groupName}\` berhasil disimpan.`,
+        autotextScheduleNotFound: (scheduleName) => `ℹ Jadwal dengan nama \`${scheduleName}\` tidak ditemukan.`,
+        autotextScheduleDeleted: (scheduleName) => `✅ Jadwal \`${scheduleName}\` berhasil dihapus.`,
+        autotextScheduleEnabled: (scheduleName, status) => `✅ Jadwal \`${scheduleName}\` telah ${status ? 'diaktifkan' : 'dinonaktifkan'}.`,
+        autotextListHeader: '🗓️ Daftar Jadwal Automated Text:\n\n',
+        autotextDetailHeader: (scheduleName) => `📄 Detail Jadwal: \`${scheduleName}\`\n`,
+        autotextNoSchedules: 'ℹ Belum ada jadwal automated text yang dibuat.',
+        autotextEnterMessageForExisting: (scheduleName, messageNumber) => `Menambahkan pesan ke jadwal \`${scheduleName}\`.\nMasukkan teks untuk pesan ke-${messageNumber}:`,
+        autotextMessageAddedToSchedule: (scheduleName) => `✅ Pesan baru berhasil ditambahkan ke jadwal \`${scheduleName}\`.`,
+        autotextAddingMessageCancelled: (scheduleName) => `ℹ Penambahan pesan ke jadwal \`${scheduleName}\` dibatalkan.`,
     },
     defaultSuperAdmins: ["62895410219991@c.us", "xxxxxxxx-yyyyyyyy@c.us"],
-    mongoURI: 'mongodb+srv://adilaksito:i2sQLt877qd56Hip@b0tw4.s7vlwih.mongodb.net/?retryWrites=true&w=majority&appName=b0tw4'
+    mongoURI: 'mongodb+srv://adilaksito:i2sQLt877qd56Hip@b0tw4.s7vlwih.mongodb.net/?retryWrites=true&w=majority&appName=b0tw4',
+    automatedMessageCheckInterval: 60000, // Interval pengecekan scheduler (ms), contoh: 1 menit
 };
