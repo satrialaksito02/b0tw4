@@ -1,0 +1,380 @@
+[
+  {
+    "id_produk_sumber": "3056542",
+    "nama": "Anggota L 3 Hari",
+    "harga": 3000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "8 GB",
+      "AREA 2": "10 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "25 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056541",
+    "nama": "Anggota L 5 Hari",
+    "harga": 5000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "8 GB",
+      "AREA 2": "10 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "25 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056540",
+    "nama": "Anggota L 7 Hari",
+    "harga": 7000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "8 GB",
+      "AREA 2": "10 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "25 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056539",
+    "nama": "Anggota L 9 Hari",
+    "harga": 9000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "8 GB",
+      "AREA 2": "10 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "25 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056537",
+    "nama": "Anggota L 11 Hari",
+    "harga": 11000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "8 GB",
+      "AREA 2": "10 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "25 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056536",
+    "nama": "Anggota L 13 Hari",
+    "harga": 13000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "8 GB",
+      "AREA 2": "10 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "25 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056535",
+    "nama": "Anggota L 15 Hari",
+    "harga": 15000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "8 GB",
+      "AREA 2": "10 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "25 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056532",
+    "nama": "Anggota L 17 Hari",
+    "harga": 17000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "8 GB",
+      "AREA 2": "10 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "25 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056531",
+    "nama": "Anggota L 19 Hari",
+    "harga": 19000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "8 GB",
+      "AREA 2": "10 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "25 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056527",
+    "nama": "Anggota XL 3 Hari",
+    "harga": 3000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "1.5 GB",
+      "AREA 2": "4.5 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "39 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056526",
+    "nama": "Anggota XL 5 Hari",
+    "harga": 5000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "1.5 GB",
+      "AREA 2": "4.5 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "39 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056525",
+    "nama": "Anggota XL 7 Hari",
+    "harga": 7000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "1.5 GB",
+      "AREA 2": "4.5 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "39 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056523",
+    "nama": "Anggota XL 9 Hari",
+    "harga": 9000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "1.5 GB",
+      "AREA 2": "4.5 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "39 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056522",
+    "nama": "Anggota XL 11 Hari",
+    "harga": 11000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "1.5 GB",
+      "AREA 2": "4.5 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "39 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056521",
+    "nama": "Anggota XL 13 Hari",
+    "harga": 13000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "1.5 GB",
+      "AREA 2": "4.5 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "39 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056520",
+    "nama": "Anggota XL 15 Hari",
+    "harga": 15000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "1.5 GB",
+      "AREA 2": "4.5 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "39 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056519",
+    "nama": "Anggota XL 17 Hari",
+    "harga": 17000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "1.5 GB",
+      "AREA 2": "4.5 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "39 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056518",
+    "nama": "Anggota XL 19 Hari",
+    "harga": 19000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "1.5 GB",
+      "AREA 2": "4.5 GB",
+      "AREA 3": "15 GB",
+      "AREA 4": "39 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056517",
+    "nama": "Anggota XXL 3 Hari",
+    "harga": 5000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "7.5 GB",
+      "AREA 2": "12 GB",
+      "AREA 3": "25 GB",
+      "AREA 4": "65 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056516",
+    "nama": "Anggota XXL 5 Hari",
+    "harga": 7000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "7.5 GB",
+      "AREA 2": "12 GB",
+      "AREA 3": "25 GB",
+      "AREA 4": "65 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056515",
+    "nama": "Anggota XXL 7 Hari",
+    "harga": 10000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "7.5 GB",
+      "AREA 2": "12 GB",
+      "AREA 3": "25 GB",
+      "AREA 4": "65 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056514",
+    "nama": "Anggota XXL 9 Hari",
+    "harga": 12000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "7.5 GB",
+      "AREA 2": "12 GB",
+      "AREA 3": "25 GB",
+      "AREA 4": "65 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056513",
+    "nama": "Anggota XXL 11 Hari",
+    "harga": 14000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "7.5 GB",
+      "AREA 2": "12 GB",
+      "AREA 3": "25 GB",
+      "AREA 4": "65 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056512",
+    "nama": "Anggota XXL 13 Hari",
+    "harga": 16000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "7.5 GB",
+      "AREA 2": "12 GB",
+      "AREA 3": "25 GB",
+      "AREA 4": "65 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056511",
+    "nama": "Anggota XXL 15 Hari",
+    "harga": 18000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "7.5 GB",
+      "AREA 2": "12 GB",
+      "AREA 3": "25 GB",
+      "AREA 4": "65 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056509",
+    "nama": "Anggota XXL 17 Hari",
+    "harga": 20000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "7.5 GB",
+      "AREA 2": "12 GB",
+      "AREA 3": "25 GB",
+      "AREA 4": "65 GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3056508",
+    "nama": "Anggota XXL 19 Hari",
+    "harga": 21000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "AREA 1": "7.5 GB",
+      "AREA 2": "12 GB",
+      "AREA 3": "25 GB",
+      "AREA 4": "65 GB"
+    },
+    "catatan": []
+  }
+]

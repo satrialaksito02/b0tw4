@@ -1,0 +1,258 @@
+[
+  {
+    "id_produk_sumber": "3088877",
+    "nama": "Super Jumbo",
+    "harga": 145000,
+    "stok": 0,
+    "benefits": [
+      "Kuota Bersama",
+      "Kuota Nasional",
+      "Kuota Lokal",
+      "Bonus myRewards"
+    ],
+    "kuota": {
+      "AREA 1": "185 GB",
+      "AREA 2": "190 GB",
+      "AREA 3": "203 GB",
+      "AREA 4": "243 GB"
+    },
+    "catatan": [
+      "Masa aktif 27 - 29 hari",
+      "rewards tidak masuk, tunngu 1 x 24 jam, baru komplen",
+      "official, resmi, bergaransi",
+      "Tidak ada refund jika salah nomor dan transaksi sukses!!  (Mohon lebih teliti)",
+      "- Garansi akan hangus ketika member menghapus atau mengunreg paket!"
+    ]
+  },
+  {
+    "id_produk_sumber": "3088873",
+    "nama": "Extra Jumbo",
+    "harga": 98000,
+    "stok": 0,
+    "benefits": [
+      "Kuota Bersama",
+      "Kuota Nasional",
+      "Kuota Lokal",
+      "Bonus myRewards"
+    ],
+    "kuota": {
+      "AREA 1": "105 GB",
+      "AREA 2": "110 GB",
+      "AREA 3": "123 GB",
+      "AREA 4": "163 GB"
+    },
+    "catatan": [
+      "Masa aktif 27 - 29 hari",
+      "rewards tidak masuk, tunngu 1 x 24 jam, baru komplen",
+      "official, resmi, bergaransi",
+      "Tidak ada refund jika salah nomor dan transaksi sukses!!  (Mohon lebih teliti)",
+      "- Garansi akan hangus ketika member menghapus atau mengunreg paket!"
+    ]
+  },
+  {
+    "id_produk_sumber": "3081866",
+    "nama": "Mini",
+    "harga": 52000,
+    "stok": 0,
+    "benefits": [
+      "Kuota Bersama 18 GB",
+      "Kuota Nasional",
+      "Kuota Lokal",
+      "Bonus myRewards"
+    ],
+    "kuota": {
+      "AREA 1": "31.75 - 33.75 GB",
+      "AREA 2": "33.75 - 35.75 GB",
+      "AREA 3": "38.75 - 40.75 GB",
+      "AREA 4": "48.75 - 50.75 GB",
+      "Kuota Bersama": "18 GB"
+    },
+    "catatan": [
+      "Masa aktif 27 - 29 hari",
+      "rewards tidak masuk, tunngu 1 x 24 jam, baru komplen",
+      "official, resmi, bergaransi",
+      "Tidak ada refund jika salah nomor dan transaksi sukses!!  (Mohon lebih teliti)",
+      "- Garansi akan hangus ketika member menghapus atau mengunreg paket!"
+    ]
+  },
+  {
+    "id_produk_sumber": "3057573",
+    "nama": "Mini Lite",
+    "harga": 64000,
+    "stok": 17,
+    "benefits": [
+      "Kuota Bersama 37 GB",
+      "Kuota Nasional",
+      "Kuota Lokal",
+      "Bonus myRewards"
+    ],
+    "kuota": {
+      "AREA 1": "50 - 52 Gb",
+      "AREA 2": "52 - 54 Gb",
+      "AREA 3": "57 - 59 Gb",
+      "AREA 4": "67 - 69 Gb",
+      "Kuota Bersama": "37 GB"
+    },
+    "catatan": [
+      "Masa aktif 27 - 29 hari",
+      "rewards tidak masuk, tunngu 1 x 24 jam, baru komplen",
+      "official, resmi, bergaransi",
+      "Tidak ada refund jika salah nomor dan transaksi sukses!!  (Mohon lebih teliti)",
+      "- Garansi akan hangus ketika member menghapus atau mengunreg paket!"
+    ]
+  },
+  {
+    "id_produk_sumber": "3056416",
+    "nama": "Big Old",
+    "harga": 57000,
+    "stok": 0,
+    "benefits": [
+      "Kuota Bersama",
+      "Kuota Nasional",
+      "Kuota Lokal",
+      "Bonus myRewards"
+    ],
+    "kuota": {
+      "AREA 1": "33 Gb",
+      "AREA 2": "36 Gb",
+      "AREA 3": "47 Gb",
+      "AREA 4": "71 Gb"
+    },
+    "catatan": [
+      "Masa aktif 27 - 29 hari",
+      "rewards tidak masuk, tunngu 1 x 24 jam, baru komplen",
+      "official, resmi, bergaransi",
+      "Tidak ada refund jika salah nomor dan transaksi sukses!!  (Mohon lebih teliti)",
+      "- Garansi akan hangus ketika member menghapus atau mengunreg paket!"
+    ]
+  },
+  {
+    "id_produk_sumber": "2839946",
+    "nama": "Mega Big",
+    "harga": 87000,
+    "stok": 4,
+    "benefits": [
+      "Kuota Bersama 75 GB",
+      "Kuota Nasional",
+      "Kuota Lokal",
+      "Kuota myRewards"
+    ],
+    "kuota": {
+      "AREA 1": "88 - 90GB",
+      "AREA 2": "90 - 92GB",
+      "AREA 3": "95 - 97GB",
+      "AREA 4": "105 - 107GB",
+      "Kuota Bersama": "75 GB"
+    },
+    "catatan": [
+      "Masa aktif 27 - 29 hari",
+      "rewards tidak masuk, tunngu 1 x 24 jam, baru komplen",
+      "official, resmi, bergaransi",
+      "Tidak ada refund jika salah nomor dan transaksi sukses!!  (Mohon lebih teliti)",
+      "- Garansi akan hangus ketika member menghapus atau mengunreg paket!"
+    ]
+  },
+  {
+    "id_produk_sumber": "2839945",
+    "nama": "Jumbo",
+    "harga": 76000,
+    "stok": 0,
+    "benefits": [
+      "Kuota Bersama",
+      "Kuota Nasional",
+      "Kuota Lokal",
+      "Bonus myRewards"
+    ],
+    "kuota": {
+      "AREA 1": "65 GB",
+      "AREA 2": "70 GB",
+      "AREA 3": "83 GB",
+      "AREA 4": "123 GB"
+    },
+    "catatan": [
+      "Masa aktif 27 - 29 hari",
+      "rewards tidak masuk, tunngu 1 x 24 jam, baru komplen",
+      "official, resmi, bergaransi",
+      "Tidak ada refund jika salah nomor dan transaksi sukses!!  (Mohon lebih teliti)",
+      "- Garansi akan hangus ketika member menghapus atau mengunreg paket!"
+    ]
+  },
+  {
+    "id_produk_sumber": "2839943",
+    "nama": "Big",
+    "harga": 54000,
+    "stok": 0,
+    "benefits": [
+      "Kuota Bersama 25 GB",
+      "Kuota Nasional",
+      "Kuota Lokal",
+      "Bonus myRewards"
+    ],
+    "kuota": {
+      "AREA 1": "38 GB - 40 GB",
+      "AREA 2": "40 GB - 42 GB",
+      "AREA 3": "45 GB - 47 GB",
+      "AREA 4": "55 GB - 57 GB",
+      "Kuota Bersama": "25 GB"
+    },
+    "catatan": [
+      "Masa aktif 27 - 29 hari",
+      "rewards tidak masuk, tunngu 1 x 24 jam, baru komplen",
+      "official, resmi, bergaransi",
+      "Tidak ada refund jika salah nomor dan transaksi sukses!!  (Mohon lebih teliti)",
+      "- Garansi akan hangus ketika member menghapus atau mengunreg paket!"
+    ]
+  },
+  {
+    "id_produk_sumber": "2834076",
+    "nama": "Super BIG",
+    "harga": 55000,
+    "stok": 0,
+    "benefits": [
+      "Kuota Bersama 0 GB",
+      "Kuota Nasional",
+      "Kuota Lokal",
+      "Bonus myRewards"
+    ],
+    "kuota": {
+      "AREA 1": "25-27GB",
+      "AREA 2": "30-32GB",
+      "AREA 3": "43-45GB",
+      "AREA 4": "83-85GB",
+      "Kuota Bersama": "0 GB"
+    },
+    "catatan": [
+      "Masa aktif 27 - 29 hari",
+      "rewards tidak masuk, tunngu 1 x 24 jam, baru komplen",
+      "official, resmi, bergaransi",
+      "Tidak ada refund jika salah nomor dan transaksi sukses!!  (Mohon lebih teliti)",
+      "- Garansi akan hangus ketika member menghapus atau mengunreg paket!"
+    ]
+  },
+  {
+    "id_produk_sumber": "2834073",
+    "nama": "Super Mini",
+    "harga": 40000,
+    "stok": 0,
+    "benefits": [
+      "Kuota Bersama 0 GB",
+      "Kuota Nasional",
+      "Kuota Lokal",
+      "Bonus myRewards"
+    ],
+    "kuota": {
+      "AREA 1": "13 - 15 GB",
+      "AREA 2": "15 - 17 GB",
+      "AREA 3": "20 - 22 GB",
+      "AREA 4": "30 - 32 GB",
+      "Kuota Bersama": "0 GB"
+    },
+    "catatan": [
+      "Masa aktif 27 - 29 hari",
+      "rewards tidak masuk, tunngu 1 x 24 jam, baru komplen",
+      "official, resmi, bergaransi",
+      "Tidak ada refund jika salah nomor dan transaksi sukses!!  (Mohon lebih teliti)",
+      "- Garansi akan hangus ketika member menghapus atau mengunreg paket!"
+    ]
+  }
+]

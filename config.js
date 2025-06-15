@@ -14,6 +14,8 @@ module.exports = {
         AUTOTEXT: "!automsg", // Perintah utama untuk automated text
         OPEN_GROUP: "opengrup", // New command
         CLOSE_GROUP: "closegrup", // New command
+        PROCESS_TRANSACTION: ".p", // Fitur baru
+        COMPLETE_TRANSACTION: ".d", // Fitur baru
     },
     messages: {
         privateAutoReply: () => "「 \`PESAN BOT LX DIGITAL\` 」\n\n🤖 Ini adalah balasan otomatis BOT.\n\n💎 *Perpanjang Akun Youtube Premium Anda:*\n👉 Ketik: `youtube <durasi> <email Anda>`\n      Contoh: ```youtube 3bln contoh@gmail.com```\n\n📞 *Butuh bantuan?* Hubungi Admin di wa.me/6287829708498\nTerima kasih!",
@@ -99,8 +101,28 @@ module.exports = {
         groupClosed: "🔒 Grup telah ditutup. Hanya admin yang dapat mengirim pesan.\n\nSilahkan hubungi admin jika anda membutuhkan bantuan.",
         openGroupUsage: "ℹ *Format Penggunaan:* `opengrup <pesan_opsional>`\n\n*Contoh:*\n`opengrup` Grup dibuka, silahkan berdiskusi!",
         closeGroupUsage: "ℹ *Format Penggunaan:* `closegrup <pesan_opsional>`\n\n*Contoh:*\n`closegrup` Grup ditutup untuk sementara.",
+        transactionProcessMessage: (date, time, note, userMention, adminMention) => `⏳ *TRANSAKSI DIPROSES*
+━━━━━━━━━━━━━━━ \`\`\`
+🗓️ ${date} | 🕰️ ${time}
+⚙️ STATUS   : Proses
+⏱️ ESTIMASI : 15-30 menit. \`\`\`
+━━━━━━━━━━━━━━━
+📝 CATATAN: ${note ? `${note}` : ""}
+
+${userMention}, pesananmu sedang diproses.
+Hubungi ${adminMention} jika terlalu lama.`,
+        transactionCompleteMessage: (date, time, note, userMention, adminMention) => `✅ *TRANSAKSI SUKSES*
+━━━━━━━━━━━━━━━ \`\`\`
+🗓️ ${date} | 🕰️ ${time}
+⚙️ STATUS: Berhasil \`\`\`
+━━━━━━━━━━━━━━━
+📝 CATATAN: ${note ? `${note}` : "-"}
+
+Thx ${userMention}! Cek pesan dari admin ya.
+Ditunggu order berikutnya! 😁`
     },
     defaultSuperAdmins: ["62895410219991@c.us", "xxxxxxxx-yyyyyyyy@c.us"],
+    adminContactId: "6287829708498@c.us", // ID Admin untuk di-mention
     mongoURI: 'mongodb+srv://adilaksito:i2sQLt877qd56Hip@b0tw4.s7vlwih.mongodb.net/?retryWrites=true&w=majority&appName=b0tw4',
     workingHours: {
         startHour: 6, // Jam mulai (format 24 jam, contoh: 08:00)
@@ -110,4 +132,9 @@ module.exports = {
         timeZone: 'Asia/Jakarta' // Tambahkan timezone
     },
     automatedMessageCheckInterval: 300000, // Interval pengecekan scheduler (ms), contoh: 1 menit
+    // Konfigurasi Baru untuk OpenRouter
+    openRouter: {
+        apiKey: "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", // <-- PASTE API KEY ANDA DI SINI
+        model: "google/gemini-2.5-flash-preview-05-20" // atau model lain pilihan Anda
+    },
 };
