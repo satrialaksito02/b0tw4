@@ -468,3 +468,5 @@ credential.json
 .wwebjs_cache/2.3000.1023001845.html
 credential.json
 credential.json
+/.wwebjs_auth
+/.wwebjs_cache
