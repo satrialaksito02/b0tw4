@@ -468,5 +468,35 @@ credential.json
 .wwebjs_cache/2.3000.1023001845.html
 credential.json
 credential.json
+<<<<<<< HEAD
 /.wwebjs_auth
 /.wwebjs_cache
+=======
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_000089
+.wwebjs_auth/session/Default/Cache/Cache_Data/f_00008a
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001609.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001610.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001611.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001622.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001626.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001627.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001628.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001629.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001630.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001631.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001632.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001633.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001634.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001635.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001636.ldb
+.wwebjs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001637.ldb
+.wwebjs_auth/session/Default/Local Storage/leveldb/000013.ldb
+.wwebjs_auth/session/Default/Service Worker/ScriptCache/653e56b4b6556a9e_0
+.wwebjs_auth/session/Default/Service Worker/ScriptCache/653e56b4b6556a9e_1
+.wwebjs_auth/session/Default/Service Worker/ScriptCache/f13a76bbf6c7f0b3_0
+.wwebjs_auth/session/Default/Service Worker/ScriptCache/f13a76bbf6c7f0b3_1
+.wwebjs_cache/2.3000.1023003555.html
+/.wwebjs_auth
+/.wwebjs_cache
+credential.json
+>>>>>>> automatedmessage

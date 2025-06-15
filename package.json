@@ -81,6 +81,7 @@
     "fs.realpath": "^1.0.0",
     "fstream": "^1.0.12",
     "function-bind": "^1.1.2",
+    "fuse.js": "^7.1.0",
     "gaxios": "^6.7.1",
     "get-caller-file": "^2.0.5",
     "get-intrinsic": "^1.2.7",

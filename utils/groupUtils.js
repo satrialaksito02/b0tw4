@@ -17,29 +17,40 @@ async function isGroupSubscribed(groupId) {
     return group && group.expiration && new Date(group.expiration) > new Date();
 }
 
-async function addSubscription(groupId, days, startDate = new Date()) {
+// Modifikasi fungsi addSubscription untuk menyertakan groupName
+async function addSubscription(groupId, groupName, days, startDate = new Date()) { // <<< TAMBAHKAN groupName
     if (!groupId || !days || isNaN(days)) {
         console.error("Error: Invalid groupId or days parameter.");
         return false;
+    }
+    if (!groupName) { // Tambahkan validasi sederhana untuk groupName
+        console.warn(`Warning: groupName not provided for groupId ${groupId}. It's recommended to provide it.`);
+        // Anda bisa memutuskan untuk tidak melanjutkan jika groupName wajib, atau mengisinya dengan default/placeholder
     }
 
     const expirationDate = new Date(startDate);
     expirationDate.setDate(expirationDate.getDate() + parseInt(days));
 
     try {
-        const update = {
-            expiration: expirationDate,
-            // Set default jika grup baru ditambahkan atau perbarui expiration jika sudah ada
-            $setOnInsert: {
+        // Update payload untuk selalu mengatur/memperbarui nama dan tanggal kedaluwarsa
+        const updatePayload = {
+            $set: {
+                name: groupName || null, // Simpan nama grup, atau null jika tidak ada
+                expiration: expirationDate,
+            },
+            $setOnInsert: { // Hanya diatur saat dokumen baru dibuat
                 groupId: groupId,
                 antilinkEnabled: false,
                 'welcomeMessage.enabled': false,
                 'welcomeMessage.message': null,
             }
         };
+        // Jika nama grup belum ada di $setOnInsert dan ini adalah insert baru, $set akan menanganinya.
+        // Jika nama grup berubah, $set juga akan menanganinya.
+
         const options = { upsert: true, new: true, setDefaultsOnInsert: true };
-        const updatedGroup = await Group.findOneAndUpdate({ groupId }, update, options);
-        console.log(`Subscription added/updated for group ${groupId}. Expires: ${updatedGroup.expiration}`);
+        const updatedGroup = await Group.findOneAndUpdate({ groupId }, updatePayload, options);
+        console.log(`Subscription added/updated for group ${groupId} (${updatedGroup.name}). Expires: ${updatedGroup.expiration}`);
         return true;
     } catch (error) {
         console.error(`Error adding/updating subscription for ${groupId}:`, error);

@@ -1,0 +1,24 @@
+[
+  {
+    "id_produk_sumber": "3097432",
+    "nama": "Circle 65 GB",
+    "harga": 50000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "Nasional": "65GB"
+    },
+    "catatan": []
+  },
+  {
+    "id_produk_sumber": "3077524",
+    "nama": "Circle 25 GB",
+    "harga": 20000,
+    "stok": 0,
+    "benefits": [],
+    "kuota": {
+      "Nasional": "25GB"
+    },
+    "catatan": []
+  }
+]

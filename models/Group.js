@@ -5,8 +5,12 @@ const GroupSchema = new mongoose.Schema({
     groupId: {
         type: String,
         required: true,
-        unique: true, // Pastikan setiap groupId unik
-        index: true,    // Tambahkan index untuk pencarian cepat
+        unique: true,
+        index: true,
+    },
+    name: { // <<< TAMBAHKAN FIELD INI
+        type: String,
+        required: false, // Bisa jadi false jika ada data lama, namun sebaiknya diisi
     },
     expiration: {
         type: Date,
@@ -26,6 +30,6 @@ const GroupSchema = new mongoose.Schema({
             default: null,
         },
     },
-}, { timestamps: true }); // Tambahkan timestamps jika perlu (createdAt, updatedAt)
+}, { timestamps: true });
 
 module.exports = mongoose.model('Group', GroupSchema);

@@ -6,6 +6,8 @@ const { checkSubscriptionExpiry } = require('./utils/groupUtils');
 const { onMessage } = require('./messageHandler');
 const config = require('./config');
 const { isGroupSubscribed, isWelcomeEnabled, getWelcomeMessage } = require('./utils/groupUtils'); // Pindahkan impor ke atas
+const { initializeScheduler, stopScheduler } = require('./services/schedulerService'); 
+const kuotaUtils = require('./utils/kuotaUtils'); // <-- Impor modul kuota
 
 // Hubungkan ke MongoDB saat aplikasi dimulai
 connectDB();
@@ -51,11 +53,23 @@ client.on('ready', async () => {
 
     checkAndNotify();
     setInterval(checkAndNotify, 24 * 60 * 60 * 1000); // Setiap 24 jam
+
+    console.log("Memuat data dan memperbarui pricelist awal...");
+    kuotaUtils.loadAreaDatabase(); // Muat DB Area ke memori
+    await kuotaUtils.refreshPricelists(); // Jalankan scraper saat start
+    // Atur agar scraper berjalan setiap 6 jam (21600000 ms)
+    setInterval(() => kuotaUtils.refreshPricelists(), 1800000);
+    // -------------------------
+
+    // --- Inisialisasi Scheduler untuk Automated Messages ---
+    initializeScheduler(client);
+    console.log('Automated message scheduler initialized.');
 });
 
 client.on('disconnected', (reason) => {
     console.log('Client was logged out:', reason);
     // Pertimbangkan strategi reconnect yang lebih baik jika diperlukan
+    stopScheduler();
     client.initialize().catch(err => console.error('Reinitialization failed:', err));
 });
 
